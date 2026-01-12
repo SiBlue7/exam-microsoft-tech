@@ -72,4 +72,30 @@ public class Maze
         Start = start.Value;
         Exit = exit.Value;
     }
+    
+    public IList<(int, int)> GetNeighbours(int x, int y)
+    {
+        var result = new List<(int, int)>();
+
+        var candidates = new (int nx, int ny)[]
+        {
+            (x - 1, y), // haut
+            (x + 1, y), // bas
+            (x, y - 1), // gauche
+            (x, y + 1)  // droite
+        };
+
+        foreach (var (nx, ny) in candidates)
+        {
+            if (nx < 0 || ny < 0) continue;
+            if (nx >= Grid.GetLength(0) || ny >= Grid.GetLength(1)) continue;
+
+            if ((nx, ny) == Start) continue;
+            if (Grid[nx, ny]) continue;
+
+            result.Add((nx, ny));
+        }
+
+        return result;
+    }
 }
