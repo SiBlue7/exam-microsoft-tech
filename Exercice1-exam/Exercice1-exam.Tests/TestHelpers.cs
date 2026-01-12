@@ -1,6 +1,14 @@
-﻿namespace Exercice1_exam.Tests;
+using Exercice1_exam.ApiServicedotnet.Controllers;
+using Exercice1_exam.ApiServicedotnet.Services;
 
-public class TestHelpers
+namespace Exercice1_exam.Tests;
+
+public static class TestHelpers
 {
-    
+    public static (OrdersController controller, StockService stock) CreateSut()
+    {
+        var stock = new StockService();
+        var controller = new OrdersController(stock);
+        return (controller, stock);
+    }
 }
