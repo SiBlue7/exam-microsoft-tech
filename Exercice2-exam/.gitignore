@@ -1,0 +1,98 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/.idea.Exercice1-exam.iml
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# ===============================
+# .NET / ASP.NET Core
+# ===============================
+bin/
+obj/
+out/
+
+# ===============================
+# Build results
+# ===============================
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ARM/
+ARM64/
+
+# ===============================
+# .NET user-specific
+# ===============================
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ===============================
+# Visual Studio / Rider
+# ===============================
+.vs/
+.idea/
+*.sln.iml
+
+# ===============================
+# Rider / IntelliJ
+# ===============================
+.idea/
+*.ipr
+*.iws
+
+# ===============================
+# OS files
+# ===============================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# NuGet
+# ===============================
+packages/
+*.nupkg
+*.snupkg
+
+# ===============================
+# Aspire / Distributed app
+# ===============================
+**/.aspire/
+**/aspire-manifest.json
+
+# ===============================
+# Test results
+# ===============================
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# ===============================
+# Publish output
+# ===============================
+publish/
+
+# ===============================
+# Environment variables
+# ===============================
+.env
+.env.*
