@@ -2,22 +2,54 @@ namespace Exercice2_exam.Worker;
 
 public class Worker : BackgroundService
 {
-    private readonly ILogger<Worker> _logger;
-
-    public Worker(ILogger<Worker> logger)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger = logger;
+        const string mazeText = """
+                                D . . # .
+                                # # . . .
+                                . # . # .
+                                . . . # .
+                                # # # # S
+                                """;
+
+        var maze = new Maze(mazeText);
+
+        PrintMaze(maze);
+
+        Console.WriteLine();
+        Console.WriteLine("Voisins de (0,1) :");
+        PrintNeighbours(maze, 0, 1);
+
+        Console.WriteLine();
+        Console.WriteLine("Voisins de (2,2) :");
+        PrintNeighbours(maze, 2, 2);
+
+        return Task.CompletedTask;
     }
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    private static void PrintMaze(Maze maze)
     {
-        while (!stoppingToken.IsCancellationRequested)
+        for (int r = 0; r < maze.Grid.GetLength(0); r++)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
+            for (int c = 0; c < maze.Grid.GetLength(1); c++)
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                if ((r, c) == maze.Start) Console.Write("D ");
+                else if ((r, c) == maze.Exit) Console.Write("S ");
+                else if (maze.Grid[r, c]) Console.Write("# ");
+                else Console.Write(". ");
             }
-            await Task.Delay(1000, stoppingToken);
+
+            Console.WriteLine();
+        }
+    }
+
+    private static void PrintNeighbours(Maze maze, int x, int y)
+    {
+        var neighbours = maze.GetNeighbours(x, y);
+
+        foreach (var (nx, ny) in neighbours)
+        {
+            Console.WriteLine($"({nx},{ny})");
         }
     }
 }
